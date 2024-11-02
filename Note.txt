@@ -1,0 +1,2 @@
+Not: this is a literal copy of the original Fortran code. 
+The subroutines can be replaced with simple Matlab functions if you prefer. 
