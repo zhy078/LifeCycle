@@ -1,0 +1,4 @@
+version: 1
+display_name: LifeCycle Optimizer
+short_description: Optimize life-cycle model assumptions and return best scenario artifacts.
+default_prompt: Optimize my life-cycle model from assumptions and constraints, then summarize the best scenario and alternatives.
