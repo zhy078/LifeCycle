@@ -84,3 +84,18 @@ When `--use-real-model` is enabled, the runner now requires Octave by default.
 If Octave is missing, it exits with an error instead of silently returning proxy scores.
 
 Use `--allow-proxy-fallback` only when you explicitly want fallback behavior for debugging.
+
+
+## Integration Test (Skill + Octave)
+
+Use this to validate end-to-end integration:
+
+```bash
+py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2
+```
+
+For strict real-model validation (require all scenarios `status=ok` and year files present):
+
+```bash
+py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2 --strict-real
+```
