@@ -52,3 +52,8 @@ Always provide:
 - Keep objective explicitly declared; never assume.
 - Keep reproducibility by setting `seed`.
 - If model execution fails, return actionable diagnostics and suggest dry-run verification.
+
+
+## Common CLI Pitfall
+
+Do not type literal `\n` in shell commands. Use real line breaks with `\` continuation, or run a single-line command.
