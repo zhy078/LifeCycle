@@ -48,6 +48,13 @@ Always provide:
 - validation notes,
 - paths to `best_params.json`, `results.jsonl`, and `report.md`.
 
+
+For real-model verification, check `results.jsonl` fields per scenario:
+- `status` must be `ok`
+- `year_files_count` should be > 0
+- `run_seconds` should be non-trivial
+- `octave_command` should be present
+
 ## Notes
 
 - Keep objective explicitly declared; never assume.

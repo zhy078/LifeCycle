@@ -139,30 +139,37 @@ def run_real_model(params, fixed, artifact_dir: Path, fast_mode: bool, timeout_s
     patch_lifecycle_script(root / "life_cycle.m", artifact_dir / "life_cycle.m", params, fixed, fast_mode)
 
     cmd = ["octave", "--quiet", "life_cycle.m"]
+    t0 = time.time()
     proc = subprocess.run(cmd, cwd=str(artifact_dir), capture_output=True, text=True, timeout=timeout_sec)
+    dt = time.time() - t0
     (artifact_dir / "octave_stdout.txt").write_text(proc.stdout, encoding="utf-8")
     (artifact_dir / "octave_stderr.txt").write_text(proc.stderr, encoding="utf-8")
     metric = parse_terminal_metric(artifact_dir)
+    year_files = sorted(artifact_dir.glob("year*.txt"))
+    status = "ok" if proc.returncode == 0 and len(year_files) > 0 else "error"
     return {
-        "status": "ok" if proc.returncode == 0 else "error",
+        "status": status,
         "artifact_dir": str(artifact_dir),
         "code": proc.returncode,
         "metric": metric,
+        "run_seconds": round(dt, 3),
+        "octave_command": " ".join(cmd),
+        "year_files_count": len(year_files),
     }
 
 
 def run_model(params, fixed, artifact_dir: Path, dry_run: bool, use_real_model: bool, fast_mode: bool, timeout_sec: int):
     artifact_dir.mkdir(parents=True, exist_ok=True)
     if dry_run:
-        return {"status": "dry_run", "artifact_dir": str(artifact_dir), "metric": None}
+        return {"status": "dry_run", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
     if use_real_model:
         if not octave_available():
-            return {"status": "error_no_octave", "artifact_dir": str(artifact_dir), "metric": None}
+            return {"status": "error_no_octave", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
         try:
             return run_real_model(params, fixed, artifact_dir, fast_mode, timeout_sec)
         except subprocess.TimeoutExpired:
-            return {"status": "error_timeout", "artifact_dir": str(artifact_dir), "metric": None}
-    return {"status": "simulated", "artifact_dir": str(artifact_dir), "metric": None}
+            return {"status": "error_timeout", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": timeout_sec, "year_files_count": 0}
+    return {"status": "simulated", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
 
 
 def build_candidates(cfg, method, max_evals, seed):
@@ -220,7 +227,9 @@ def main():
     if args.use_real_model and not octave_available() and not args.allow_proxy_fallback:
         raise RuntimeError("--use-real-model requires Octave. Install Octave or add --allow-proxy-fallback.")
 
+    octv = shutil.which("octave")
     print(f"[optimizer] method={method} objective={objective} candidates={total} dry_run={args.dry_run} use_real_model={args.use_real_model} fast_mode={args.fast_mode}")
+    print(f"[optimizer] octave_path={octv if octv else 'NOT_FOUND'}")
     sys.stdout.flush()
 
     start = time.time()
@@ -244,6 +253,9 @@ def main():
                 "status": run_meta["status"],
                 "artifact_dir": run_meta["artifact_dir"],
                 "metric": run_meta.get("metric"),
+                "run_seconds": run_meta.get("run_seconds", 0.0),
+                "year_files_count": run_meta.get("year_files_count", 0),
+                "octave_command": run_meta.get("octave_command"),
             }
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
             results.append(row)
@@ -259,6 +271,7 @@ def main():
     (out / "best_params.json").write_text(json.dumps(best, indent=2, ensure_ascii=False), encoding="utf-8")
 
     failed = sum(1 for r in results if str(r.get("status","")).startswith("error"))
+    total_runtime = round(sum(float(r.get("run_seconds", 0.0)) for r in results), 3)
 
     report = {
         "objective": objective,
@@ -267,6 +280,7 @@ def main():
         "fast_mode": args.fast_mode,
         "total_scenarios": total,
         "failed_scenarios": failed,
+        "total_model_runtime_seconds": total_runtime,
         "elapsed_seconds": round(time.time() - start, 3),
         "best": best,
         "top_k": top_k,
