@@ -11,7 +11,7 @@ Collect assumptions, generate case files, run model evaluations, rank outcomes b
 
 1. Parse user inputs into a case JSON using `assets/input-template.json`.
 2. Validate ranges and required fields (see `references/model-params.md`).
-3. Execute one baseline run to ensure runtime wiring works.
+3. Start with a fast real-model smoke run.
 4. Execute optimization search (`grid` or `random`) through `scripts/optimize.py`.
 5. Return:
    - best parameter set,
@@ -21,21 +21,22 @@ Collect assumptions, generate case files, run model evaluations, rank outcomes b
 
 ## Run Commands
 
-Use:
-
-```bash
-python3 skills/lifecycle-optimizer/scripts/optimize.py \
-  --config skills/lifecycle-optimizer/assets/sample-case.json \
-  --output-dir outputs/lifecycle-optimizer
-```
-
-If GNU Octave is unavailable, run dry-run mode:
+### Fast dry-run check
 
 ```bash
 python3 skills/lifecycle-optimizer/scripts/optimize.py \
   --config skills/lifecycle-optimizer/assets/sample-case.json \
   --output-dir outputs/lifecycle-optimizer \
   --dry-run
+```
+
+### Fast real-model smoke run (recommended first)
+
+```bash
+python3 skills/lifecycle-optimizer/scripts/optimize.py \
+  --config skills/lifecycle-optimizer/assets/sample-case.json \
+  --output-dir outputs/lifecycle-optimizer-real \
+  --use-real-model --fast-mode --max-evals 2 --progress-every 1
 ```
 
 ## Reporting Format
@@ -53,11 +54,9 @@ Always provide:
 - Keep reproducibility by setting `seed`.
 - If model execution fails, return actionable diagnostics and suggest dry-run verification.
 
-
 ## Common CLI Pitfall
 
 Do not type literal `\n` in shell commands. Use real line breaks with `\` continuation, or run a single-line command.
-
 
 ## Output Path Behavior
 
