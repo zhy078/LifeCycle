@@ -69,3 +69,11 @@ python3 skills/lifecycle-optimizer/scripts/optimize.py --config skills/lifecycle
 ```
 
 This writes to: `C:\Users\haoyu\Desktop\code\github\LifeCycle\outputs\lifecycle-optimizer`.
+
+
+## Real-Model Integrity
+
+When `--use-real-model` is enabled, the runner now requires Octave by default.
+If Octave is missing, it exits with an error instead of silently returning proxy scores.
+
+Use `--allow-proxy-fallback` only when you explicitly want fallback behavior for debugging.

@@ -188,6 +188,7 @@ def parse_args():
     ap.add_argument("--output-dir", required=True)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--use-real-model", action="store_true", help="run actual life_cycle.m via octave")
+    ap.add_argument("--allow-proxy-fallback", action="store_true", help="when real model fails, keep proxy score instead of exiting")
     ap.add_argument("--fast-mode", action="store_true", help="reduce grid/simulation size for quicker runtime")
     ap.add_argument("--timeout-sec", type=int, default=120)
     ap.add_argument("--search-method", choices=["grid", "random"], default=None)
@@ -216,6 +217,9 @@ def main():
     if total == 0:
         raise ValueError("no candidates generated")
 
+    if args.use_real_model and not octave_available() and not args.allow_proxy_fallback:
+        raise RuntimeError("--use-real-model requires Octave. Install Octave or add --allow-proxy-fallback.")
+
     print(f"[optimizer] method={method} objective={objective} candidates={total} dry_run={args.dry_run} use_real_model={args.use_real_model} fast_mode={args.fast_mode}")
     sys.stdout.flush()
 
@@ -226,7 +230,12 @@ def main():
         for i, params in enumerate(candidates):
             scenario_dir = out / f"scenario_{i:04d}"
             run_meta = run_model(params, fixed, scenario_dir, args.dry_run, args.use_real_model, args.fast_mode, args.timeout_sec)
-            score = run_meta["metric"] if run_meta.get("metric") is not None else score_proxy(params, objective)
+            if run_meta.get("metric") is not None:
+                score = run_meta["metric"]
+            elif args.use_real_model and not args.allow_proxy_fallback:
+                score = float("-inf")
+            else:
+                score = score_proxy(params, objective)
             row = {
                 "id": i,
                 "params": params,
@@ -249,18 +258,23 @@ def main():
     top_k = results[: cfg.get("top_k", 5)]
     (out / "best_params.json").write_text(json.dumps(best, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    failed = sum(1 for r in results if str(r.get("status","")).startswith("error"))
+
     report = {
         "objective": objective,
         "search_method": method,
         "use_real_model": args.use_real_model,
         "fast_mode": args.fast_mode,
         "total_scenarios": total,
+        "failed_scenarios": failed,
         "elapsed_seconds": round(time.time() - start, 3),
         "best": best,
         "top_k": top_k,
     }
     (out / "report.md").write_text("# LifeCycle Optimization Report\n\n" + json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[optimizer] done best_score={best['score']:.6f} output_dir={out}")
+    if args.use_real_model and failed > 0:
+        print(f"[optimizer] warning: {failed} real-model scenarios failed; check scenario logs")
     print(f"[optimizer] absolute_output_dir={out.resolve()}")
 
 
