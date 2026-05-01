@@ -11,6 +11,16 @@ import time
 from pathlib import Path
 
 
+def resolve_output_dir(raw_path: str) -> Path:
+    p = Path(raw_path)
+    if p.is_absolute():
+        return p
+    # Anchor relative paths to repo root (LifeCycle/) so results are predictable
+    repo_root = Path(__file__).resolve().parents[3]
+    return (repo_root / p).resolve()
+
+
+
 def load_config(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -116,7 +126,7 @@ def main():
     method = args.search_method or cfg.get("search_method", "grid")
     max_evals = args.max_evals or cfg.get("max_evals")
 
-    out = Path(args.output_dir)
+    out = resolve_output_dir(args.output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
     objective = cfg.get("objective", "maximize_terminal_wealth")
@@ -167,6 +177,7 @@ def main():
     }
     (out / "report.md").write_text("# LifeCycle Optimization Report\n\n" + json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"[optimizer] done best_score={best['score']:.6f} output_dir={out}")
+    print(f"[optimizer] absolute_output_dir={out.resolve()}")
 
 
 if __name__ == "__main__":

@@ -57,3 +57,16 @@ Always provide:
 ## Common CLI Pitfall
 
 Do not type literal `\n` in shell commands. Use real line breaks with `\` continuation, or run a single-line command.
+
+
+## Output Path Behavior
+
+Relative `--output-dir` values are anchored to the repository root (`LifeCycle/`), not your current terminal folder.
+
+Example on Windows clone path:
+
+```bash
+python3 skills/lifecycle-optimizer/scripts/optimize.py --config skills/lifecycle-optimizer/assets/sample-case.json --output-dir outputs/lifecycle-optimizer --dry-run
+```
+
+This writes to: `C:\Users\haoyu\Desktop\code\github\LifeCycle\outputs\lifecycle-optimizer`.
