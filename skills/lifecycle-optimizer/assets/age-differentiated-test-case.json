@@ -1,0 +1,34 @@
+{
+  "objective": "maximize_terminal_wealth",
+  "search_method": "grid",
+  "seed": 7,
+  "top_k": 3,
+  "client_profile": {
+    "current_wealth": 10.25
+  },
+  "fixed": {
+    "tb": 20,
+    "tr": 65,
+    "td": 100,
+    "nsim": 2000,
+    "r": 1.015
+  },
+  "search_space": {
+    "rho": [6.0, 8.0],
+    "delta": [0.95],
+    "psi": [0.4, 0.6],
+    "mu": [0.03],
+    "sigr": [0.15]
+  },
+  "constraints": {
+    "max_runtime_seconds": 300,
+    "rho_min": 1.1,
+    "delta_min": 0.8,
+    "delta_max": 0.999,
+    "psi_min": 0.1,
+    "mu_min": -0.05,
+    "mu_max": 0.2,
+    "sigr_min": 0.01,
+    "sigr_max": 1.0
+  }
+}
