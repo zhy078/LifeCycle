@@ -24,7 +24,7 @@ Collect assumptions, generate case files, run model evaluations, rank outcomes b
 ### Fast dry-run check
 
 ```bash
-python3 skills/lifecycle-optimizer/scripts/optimize.py \
+py skills/lifecycle-optimizer/scripts/optimize.py \
   --config skills/lifecycle-optimizer/assets/sample-case.json \
   --output-dir outputs/lifecycle-optimizer \
   --dry-run
@@ -33,7 +33,7 @@ python3 skills/lifecycle-optimizer/scripts/optimize.py \
 ### Fast real-model smoke run (recommended first)
 
 ```bash
-python3 skills/lifecycle-optimizer/scripts/optimize.py \
+py skills/lifecycle-optimizer/scripts/optimize.py \
   --config skills/lifecycle-optimizer/assets/sample-case.json \
   --output-dir outputs/lifecycle-optimizer-real \
   --use-real-model --fast-mode --max-evals 2 --progress-every 1
@@ -72,7 +72,7 @@ Relative `--output-dir` values are anchored to the repository root (`LifeCycle/`
 Example on Windows clone path:
 
 ```bash
-python3 skills/lifecycle-optimizer/scripts/optimize.py --config skills/lifecycle-optimizer/assets/sample-case.json --output-dir outputs/lifecycle-optimizer --dry-run
+py skills/lifecycle-optimizer/scripts/optimize.py --config skills/lifecycle-optimizer/assets/sample-case.json --output-dir outputs/lifecycle-optimizer --dry-run
 ```
 
 This writes to: `C:\Users\haoyu\Desktop\code\github\LifeCycle\outputs\lifecycle-optimizer`.
@@ -82,6 +82,8 @@ This writes to: `C:\Users\haoyu\Desktop\code\github\LifeCycle\outputs\lifecycle-
 
 When `--use-real-model` is enabled, the runner now requires Octave by default.
 If Octave is missing, it exits with an error instead of silently returning proxy scores.
+The real-model runner now executes inside each scenario artifact directory so generated `year*.txt`, `CWY.txt`, `CWYs.txt`, and `SB.txt` stay attached to the scenario that produced them.
+Fast mode keeps the model's Gaussian quadrature size intact and only reduces lightweight dimensions such as `nsim`, so it remains compatible with the current `life_cycle.m`.
 
 Use `--allow-proxy-fallback` only when you explicitly want fallback behavior for debugging.
 
