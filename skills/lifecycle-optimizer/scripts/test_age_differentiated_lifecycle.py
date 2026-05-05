@@ -29,7 +29,7 @@ class LifecycleAgeDifferentiationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             artifact_dir = Path(tmp) / "scenario_0001"
 
-            def fake_run(cmd, cwd, capture_output, text, encoding, errors, timeout):
+            def fake_run_octave(cmd, cwd, timeout):
                 cwd_path = Path(cwd)
                 Path(cwd, "CWY.txt").write_text("0.1 42.5 0.3 1.0\n", encoding="utf-8")
                 for age in range(20, 100):
@@ -45,16 +45,19 @@ class LifecycleAgeDifferentiationTests(unittest.TestCase):
                     else:
                         alpha_mid = 0.15
                         consumption_mid = 0.75
-                    _write_policy_file(cwd_path / f"year{age}.txt", alpha_mid=alpha_mid, consumption_mid=consumption_mid)
+                    file_idx = age - fixed["tb"] + 1
+                    _write_policy_file(cwd_path / f"year{file_idx:02d}.txt", alpha_mid=alpha_mid, consumption_mid=consumption_mid)
+                Path(cwd, "octave_stdout.txt").write_text("ok", encoding="utf-8")
+                Path(cwd, "octave_stderr.txt").write_text("", encoding="utf-8")
+                return {
+                    "code": 0,
+                    "timed_out": False,
+                    "run_seconds": 0.123,
+                    "stdout_path": str(cwd_path / "octave_stdout.txt"),
+                    "stderr_path": str(cwd_path / "octave_stderr.txt"),
+                }
 
-                class Result:
-                    returncode = 0
-                    stdout = "ok"
-                    stderr = ""
-
-                return Result()
-
-            with patch("optimize.subprocess.run", side_effect=fake_run):
+            with patch("optimize.octave_executable", return_value="octave-cli"), patch("optimize.run_octave_command", side_effect=fake_run_octave):
                 result = optimize.run_real_model(params, fixed, artifact_dir, fast_mode=True, timeout_sec=60)
 
         self.assertEqual(result["status"], "ok")
@@ -71,6 +74,19 @@ class LifecycleAgeDifferentiationTests(unittest.TestCase):
         self.assertEqual(checkpoints[-1]["phase"], "retired")
         self.assertGreater(checkpoints[0]["mid_wealth_alpha"], checkpoints[-1]["mid_wealth_alpha"])
         self.assertGreater(checkpoints[0]["mid_wealth_consumption"], checkpoints[-1]["mid_wealth_consumption"])
+
+    def test_partial_year_files_keep_file_index_age_mapping(self):
+        fixed = {"tb": 20, "tr": 65, "td": 100}
+        with tempfile.TemporaryDirectory() as tmp:
+            run_dir = Path(tmp)
+            _write_policy_file(run_dir / "year47.txt", alpha_mid=0.30, consumption_mid=0.90)
+            _write_policy_file(run_dir / "year80.txt", alpha_mid=0.15, consumption_mid=0.75)
+
+            summary = optimize.build_policy_summary(run_dir, fixed)
+
+        self.assertEqual(summary["age_span"], {"start": 66, "end": 99})
+        self.assertEqual([row["age"] for row in summary["per_age"]], [66, 99])
+        self.assertTrue(all(row["phase"] == "retired" for row in summary["per_age"]))
 
 
 if __name__ == "__main__":

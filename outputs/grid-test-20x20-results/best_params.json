@@ -1,0 +1,123 @@
+{
+  "id": 0,
+  "params": {
+    "rho": 6.0,
+    "delta": 0.97,
+    "psi": 0.6,
+    "mu": 0.03,
+    "sigr": 0.15
+  },
+  "objective": "maximize_lifetime_utility",
+  "score": 2.7942489329432654,
+  "status": "ok",
+  "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\grid-test-20x20-results\\scenario_0000",
+  "metric": 2.7942489329432654,
+  "run_seconds": 741.091,
+  "year_files_count": 80,
+  "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+  "code": 0,
+  "timed_out": false,
+  "kill_meta": null,
+  "diagnostic_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\grid-test-20x20-results\\scenario_0000\\runner_diagnostics.json",
+  "policy_summary_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\grid-test-20x20-results\\scenario_0000\\policy_summary.json",
+  "lifecycle_checkpoints": {
+    "age_span": {
+      "start": 20,
+      "end": 99
+    },
+    "checkpoints": [
+      {
+        "age": 20,
+        "phase": "working",
+        "mid_wealth_alpha": 1.0,
+        "mid_wealth_consumption": 1.27686988,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 1.0,
+            "consumption": 1.27686988,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "alpha": 0.21052632,
+            "consumption": 10.97300335,
+            "cash": 200.0
+          }
+        }
+      },
+      {
+        "age": 64,
+        "phase": "working",
+        "mid_wealth_alpha": 0.68421053,
+        "mid_wealth_consumption": 1.15504162,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 0.68421053,
+            "consumption": 1.15504162,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "alpha": 0.15789474,
+            "consumption": 12.96568913,
+            "cash": 200.0
+          }
+        }
+      },
+      {
+        "age": 65,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.68421053,
+        "mid_wealth_consumption": 1.1705319,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 0.68421053,
+            "consumption": 1.1705319,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "alpha": 0.15789474,
+            "consumption": 10.74897897,
+            "cash": 200.0
+          }
+        }
+      },
+      {
+        "age": 99,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.26315789,
+        "mid_wealth_consumption": 4.80822415,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 0.26315789,
+            "consumption": 4.80822415,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "alpha": 0.21052632,
+            "consumption": 98.79323711,
+            "cash": 200.0
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": 0,
+  "params": {
+    "rho": 10.0,
+    "delta": 0.96,
+    "psi": 0.5,
+    "mu": 0.04,
+    "sigr": 0.12
+  },
+  "objective": "maximize_terminal_wealth",
+  "score": 0.05733351,
+  "status": "ok",
+  "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\stage1-bank-client-conservative-real\\scenario_0000",
+  "metric": 0.05733351,
+  "run_seconds": 117.596,
+  "year_files_count": 53,
+  "octave_command": "octave --quiet life_cycle.m"
+}

@@ -13,6 +13,15 @@ from pathlib import Path
 
 
 PARAM_LINE_RE = re.compile(r"^(?P<name>\w+)\s*=\s*[^;]+;\s*$")
+MODEL_KEYS = ["rho", "delta", "psi", "mu", "sigr"]
+
+
+def matlab_literal(value):
+    if isinstance(value, str):
+        if value.startswith("'") and value.endswith("'"):
+            return value
+        return "'" + value.replace("'", "''") + "'"
+    return value
 
 
 def resolve_output_dir(raw_path: str) -> Path:
@@ -27,6 +36,59 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[3]
 
 
+def model_dir() -> Path:
+    return repo_root() / "model"
+
+
+def parse_client_text(text: str):
+    app_dir = repo_root() / "app"
+    if str(app_dir) not in sys.path:
+        sys.path.insert(0, str(app_dir))
+    from client_input import parse_client_input
+
+    client = parse_client_input(text)
+    missing = [name for name in ["age", "wealth", "rho"] if client.get(name) is None]
+    if missing:
+        raise ValueError(f"client text is missing fields: {', '.join(missing)}")
+    return client
+
+
+def _first_search_value(cfg, key, default):
+    values = cfg.get("search_space", {}).get(key)
+    if values:
+        return values[0]
+    return default
+
+
+def apply_client_text_config(cfg, text: str, keep_parameter_grid: bool = False):
+    """Convert free-text client input into a real-model scenario config."""
+    client = parse_client_text(text)
+    cfg.setdefault("search_space", {})
+    cfg["search_space"]["rho"] = [float(client["rho"])]
+    if not keep_parameter_grid:
+        defaults = {
+            "delta": 0.97,
+            "psi": 0.5,
+            "mu": 0.04,
+            "sigr": 0.2,
+        }
+        for key, default in defaults.items():
+            cfg["search_space"][key] = [float(_first_search_value(cfg, key, default))]
+        cfg["max_evals"] = 1
+
+    profile = dict(cfg.get("client_profile") or {})
+    profile.update({
+        "raw_text": text,
+        "current_age": int(client["age"]),
+        "current_wealth": float(client["wealth"]),
+        "income_profile": client.get("income_profile", "stable"),
+        "risk_preference": client.get("risk_preference"),
+        "rho": float(client["rho"]),
+    })
+    cfg["client_profile"] = profile
+    return client
+
+
 def load_config(path: Path):
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
@@ -36,7 +98,7 @@ def validate(cfg):
     if "constraints" not in cfg or "search_space" not in cfg:
         raise ValueError("config must include constraints and search_space")
     c = cfg["constraints"]
-    required = ["rho", "delta", "psi", "mu", "sigr"]
+    required = MODEL_KEYS
     for k in required:
         if k not in cfg["search_space"] or not cfg["search_space"][k]:
             raise ValueError(f"missing search_space.{k}")
@@ -73,8 +135,103 @@ def score_proxy(params, objective):
     return baseline
 
 
+def ranking_score(row):
+    score = row.get("score")
+    if isinstance(score, (int, float)) and math.isfinite(score):
+        return score
+    return float("-inf")
+
+
+def format_score(score):
+    if isinstance(score, (int, float)) and math.isfinite(score):
+        return f"{score:.6f}"
+    return "NA"
+
+
+def octave_executable():
+    return shutil.which("octave-cli") or shutil.which("octave")
+
+
 def octave_available():
-    return shutil.which("octave") is not None
+    return octave_executable() is not None
+
+
+def build_octave_command():
+    exe = octave_executable()
+    if not exe:
+        return None
+    exe_name = Path(exe).name.lower()
+    if "octave-cli" in exe_name:
+        return [exe, "--quiet", "life_cycle.m"]
+    return [exe, "--no-gui", "--quiet", "life_cycle.m"]
+
+
+def terminate_process_tree(proc):
+    result = {"attempted": False, "returncode": None}
+    if proc.poll() is not None:
+        return result
+    if sys.platform.startswith("win"):
+        taskkill = subprocess.run(
+            ["taskkill", "/PID", str(proc.pid), "/T", "/F"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+        result = {"attempted": True, "returncode": taskkill.returncode}
+    else:
+        proc.kill()
+        result = {"attempted": True, "returncode": None}
+    try:
+        proc.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        try:
+            proc.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            pass
+    result["final_returncode"] = proc.returncode
+    return result
+
+
+def run_octave_command(cmd, artifact_dir: Path, timeout_sec: int):
+    stdout_path = artifact_dir / "octave_stdout.txt"
+    stderr_path = artifact_dir / "octave_stderr.txt"
+    creationflags = getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0) if sys.platform.startswith("win") else 0
+    popen_kwargs = {
+        "cwd": str(artifact_dir),
+        "stdout": None,
+        "stderr": None,
+        "text": True,
+        "encoding": "utf-8",
+        "errors": "ignore",
+    }
+    if sys.platform.startswith("win"):
+        popen_kwargs["creationflags"] = creationflags
+    else:
+        popen_kwargs["start_new_session"] = True
+
+    t0 = time.time()
+    timed_out = False
+    kill_meta = None
+    with stdout_path.open("w", encoding="utf-8", errors="ignore") as stdout_f, stderr_path.open("w", encoding="utf-8", errors="ignore") as stderr_f:
+        popen_kwargs["stdout"] = stdout_f
+        popen_kwargs["stderr"] = stderr_f
+        proc = subprocess.Popen(cmd, **popen_kwargs)
+        try:
+            code = proc.wait(timeout=timeout_sec)
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            kill_meta = terminate_process_tree(proc)
+            code = proc.returncode
+
+    return {
+        "code": code,
+        "timed_out": timed_out,
+        "kill_meta": kill_meta if timed_out else None,
+        "run_seconds": round(time.time() - t0, 3),
+        "stdout_path": str(stdout_path),
+        "stderr_path": str(stderr_path),
+    }
 
 
 def patch_lifecycle_script(src: Path, dst: Path, params: dict, fixed: dict, fast_mode: bool):
@@ -89,12 +246,17 @@ def patch_lifecycle_script(src: Path, dst: Path, params: dict, fixed: dict, fast
         "tr": fixed.get("tr", 66),
         "td": fixed.get("td", 100),
         "nsim": fixed.get("nsim", 10000),
+        "income_profile": fixed.get("income_profile", "stable"),
+        "market_profile": fixed.get("market_profile", "base"),
+        "output_root": fixed.get("output_root", ""),
+        "scenario_name": fixed.get("scenario_name", ""),
     }
     if fast_mode:
+        nsim = int(fixed.get("nsim", 1000))
         replacements.update({
             "na": fixed.get("na", 10),
             "ncash": fixed.get("ncash", 10),
-            "nsim": fixed.get("nsim", 1000),
+            "nsim": min(nsim, 1000),
         })
 
     lines = src.read_text(encoding="utf-8").splitlines()
@@ -103,11 +265,8 @@ def patch_lifecycle_script(src: Path, dst: Path, params: dict, fixed: dict, fast
         m = PARAM_LINE_RE.match(ln.strip())
         if m and m.group("name") in replacements:
             name = m.group("name")
-            val = replacements[name]
-            if isinstance(val, str):
-                out_lines.append(f"{name} = {val};")
-            else:
-                out_lines.append(f"{name} = {val};")
+            val = matlab_literal(replacements[name])
+            out_lines.append(f"{name} = {val};")
         else:
             out_lines.append(ln)
     dst.write_text("\n".join(out_lines) + "\n", encoding="utf-8")
@@ -138,6 +297,46 @@ def parse_terminal_metric(run_dir: Path):
         return float(parts[0])
     except ValueError:
         return None
+
+
+def interpolate_policy_value(entries, current_wealth):
+    if not entries:
+        return None
+    if current_wealth is None:
+        return entries[len(entries) // 2]["value"]
+    ordered = sorted(entries, key=lambda row: row["cash"])
+    wealth = float(current_wealth)
+    if wealth <= ordered[0]["cash"]:
+        return ordered[0]["value"]
+    if wealth >= ordered[-1]["cash"]:
+        return ordered[-1]["value"]
+    for left, right in zip(ordered, ordered[1:]):
+        if left["cash"] <= wealth <= right["cash"]:
+            span = right["cash"] - left["cash"]
+            if span == 0:
+                return left["value"]
+            weight = (wealth - left["cash"]) / span
+            return left["value"] + weight * (right["value"] - left["value"])
+    return ordered[len(ordered) // 2]["value"]
+
+
+def parse_lifecycle_utility_metric(run_dir: Path, fixed: dict, client_profile=None):
+    client_profile = client_profile or {}
+    tb = int(fixed.get("tb", 20))
+    td = int(fixed.get("td", 100))
+    current_age = int(client_profile.get("current_age", tb))
+    current_age = min(max(current_age, tb), td - 1)
+    file_idx = current_age - tb + 1
+    year_file = run_dir / f"year{file_idx:02d}.txt"
+    if not year_file.exists():
+        candidates = sorted(run_dir.glob("year*.txt"), key=lambda path: year_file_index(path) or path.name)
+        if not candidates:
+            return None
+        year_file = min(candidates, key=lambda path: abs((year_file_index(path) or file_idx) - file_idx))
+    parsed = parse_year_policy(year_file)
+    if not parsed:
+        return None
+    return interpolate_policy_value(parsed["value"], client_profile.get("current_wealth"))
 
 
 def _read_numeric_pairs(path: Path):
@@ -192,8 +391,16 @@ def summarize_policy_curve(entries):
     }
 
 
+def year_file_index(path: Path):
+    m = re.match(r"year(?P<idx>\d+)$", path.stem)
+    return int(m.group("idx")) if m else None
+
+
 def build_policy_summary(run_dir: Path, fixed: dict):
-    year_files = sorted(run_dir.glob("year*.txt"))
+    year_files = sorted(
+        run_dir.glob("year*.txt"),
+        key=lambda path: year_file_index(path) or path.name,
+    )
     if not year_files:
         return None
 
@@ -201,11 +408,14 @@ def build_policy_summary(run_dir: Path, fixed: dict):
     tr = int(fixed.get("tr", 66))
     td = int(fixed.get("td", 100))
     per_age = []
-    for idx, year_file in enumerate(year_files):
+    for year_file in year_files:
         parsed = parse_year_policy(year_file)
         if not parsed:
             continue
-        age = min(tb + idx, td - 1)
+        file_idx = year_file_index(year_file)
+        if file_idx is None:
+            continue
+        age = min(tb + file_idx - 1, td - 1)
         per_age.append({
             "age": age,
             "phase": "working" if age < tr else "retired",
@@ -430,7 +640,7 @@ def render_customer_manager_report(best, report_meta, fixed, client_profile=None
         "",
         f"- 生命周期区间: {fixed.get('tb', 20)}岁开始工作，{retirement_age}岁退休，{death_age}岁寿命终点",
         f"- 模型目标: {objective}",
-        f"- 最优场景分数: {best.get('score', 0.0):.6f}",
+        f"- 最优场景分数: {format_score(best.get('score'))}",
         f"- 财富输入: {'未提供，当前报告默认展示所选财富路径并保留其他财富档位供比对' if current_wealth is None else f'current_wealth={current_wealth}，已按最接近的 policy function 节点取值'}",
         f"- 建议起始组合: {first['portfolio']['bucket']}，权益类约{first['portfolio']['equity_pct']}%，稳健类约{first['portfolio']['stabilizer_pct']}%",
         f"- 模型参数附录: rho={params.get('rho')}, delta={params.get('delta')}, psi={params.get('psi')}, mu={params.get('mu')}, sigr={params.get('sigr')}",
@@ -676,7 +886,7 @@ def render_customer_manager_report(best, report_meta, fixed, client_profile=None
         "",
         f"- 生命周期区间: {fixed.get('tb', 20)}岁开始工作，{retirement_age}岁退休，{death_age}岁寿命终点",
         f"- 模型目标: {objective}",
-        f"- 最优场景分数: {best.get('score', 0.0):.6f}",
+        f"- 最优场景分数: {format_score(best.get('score'))}",
         (
             "- 财富输入: 未提供；本报告会展示低/中/高财富三种路径，并默认按中财富路径生成主结论"
             if current_wealth is None
@@ -760,51 +970,68 @@ def render_customer_manager_report(best, report_meta, fixed, client_profile=None
     return "\n".join(lines)
 
 
-def run_real_model(params, fixed, artifact_dir: Path, fast_mode: bool, timeout_sec: int):
+def run_real_model(params, fixed, artifact_dir: Path, fast_mode: bool, timeout_sec: int, client_profile=None):
     artifact_dir.mkdir(parents=True, exist_ok=True)
-    root = repo_root()
+    source_dir = model_dir()
     needed = ["f_spline.m", "f_sc_splint.m", "f_ntoil.m", "f_randn.m"]
     for fn in needed:
-        shutil.copy2(root / fn, artifact_dir / fn)
+        shutil.copy2(source_dir / fn, artifact_dir / fn)
 
-    patch_lifecycle_script(root / "life_cycle.m", artifact_dir / "life_cycle.m", params, fixed, fast_mode)
+    patch_lifecycle_script(source_dir / "life_cycle.m", artifact_dir / "life_cycle.m", params, fixed, fast_mode)
 
-    cmd = ["octave", "--quiet", "life_cycle.m"]
-    t0 = time.time()
-    proc = subprocess.run(
-        cmd,
-        cwd=str(artifact_dir),
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="ignore",
-        timeout=timeout_sec,
-    )
-    dt = time.time() - t0
-    (artifact_dir / "octave_stdout.txt").write_text(proc.stdout or "", encoding="utf-8")
-    (artifact_dir / "octave_stderr.txt").write_text(proc.stderr or "", encoding="utf-8")
-    metric = parse_terminal_metric(artifact_dir)
+    cmd = build_octave_command()
+    if not cmd:
+        return {"status": "error_no_octave", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
+    proc_meta = run_octave_command(cmd, artifact_dir, timeout_sec)
+    metric = parse_lifecycle_utility_metric(artifact_dir, fixed, client_profile)
     year_files = sorted(artifact_dir.glob("year*.txt"))
-    policy_summary = build_policy_summary(artifact_dir, fixed) if proc.returncode == 0 and year_files else None
+    policy_summary = build_policy_summary(artifact_dir, fixed) if year_files else None
     if policy_summary:
         (artifact_dir / "policy_summary.json").write_text(json.dumps(policy_summary, indent=2, ensure_ascii=False), encoding="utf-8")
         (artifact_dir / "policy_summary.md").write_text(render_policy_markdown(policy_summary), encoding="utf-8")
     lifecycle_checkpoints = build_lifecycle_checkpoints(policy_summary)
-    status = "ok" if proc.returncode == 0 and len(year_files) > 0 else "error"
+    if proc_meta["timed_out"]:
+        status = "error_timeout"
+    elif proc_meta["code"] == 0 and len(year_files) > 0:
+        status = "ok"
+    else:
+        status = "error"
+    diagnostic_path = artifact_dir / "runner_diagnostics.json"
+    diagnostic_path.write_text(
+        json.dumps({
+            "status": status,
+            "code": proc_meta["code"],
+            "timed_out": proc_meta["timed_out"],
+            "timeout_sec": timeout_sec,
+            "run_seconds": proc_meta["run_seconds"],
+            "kill_meta": proc_meta.get("kill_meta"),
+            "octave_command": " ".join(cmd),
+            "stdout_path": proc_meta["stdout_path"],
+            "stderr_path": proc_meta["stderr_path"],
+            "year_files_count": len(year_files),
+            "metric": metric,
+        }, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
     return {
         "status": status,
         "artifact_dir": str(artifact_dir),
-        "code": proc.returncode,
+        "code": proc_meta["code"],
+        "timed_out": proc_meta["timed_out"],
+        "kill_meta": proc_meta.get("kill_meta"),
         "metric": metric,
-        "run_seconds": round(dt, 3),
+        "run_seconds": proc_meta["run_seconds"],
         "octave_command": " ".join(cmd),
         "year_files_count": len(year_files),
+        "diagnostic_path": str(diagnostic_path),
         "policy_summary_path": str(artifact_dir / "policy_summary.json") if policy_summary else None,
         "lifecycle_checkpoints": lifecycle_checkpoints,
     }
 
 
-def run_model(params, fixed, artifact_dir: Path, dry_run: bool, use_real_model: bool, fast_mode: bool, timeout_sec: int):
+def run_model(params, fixed, artifact_dir: Path, dry_run: bool, use_real_model: bool, fast_mode: bool, timeout_sec: int, client_profile=None):
+    if artifact_dir.exists():
+        shutil.rmtree(artifact_dir)
     artifact_dir.mkdir(parents=True, exist_ok=True)
     if dry_run:
         return {"status": "dry_run", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
@@ -812,14 +1039,14 @@ def run_model(params, fixed, artifact_dir: Path, dry_run: bool, use_real_model: 
         if not octave_available():
             return {"status": "error_no_octave", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
         try:
-            return run_real_model(params, fixed, artifact_dir, fast_mode, timeout_sec)
+            return run_real_model(params, fixed, artifact_dir, fast_mode, timeout_sec, client_profile)
         except subprocess.TimeoutExpired:
             return {"status": "error_timeout", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": timeout_sec, "year_files_count": 0}
     return {"status": "simulated", "artifact_dir": str(artifact_dir), "metric": None, "run_seconds": 0.0, "year_files_count": 0}
 
 
 def build_candidates(cfg, method, max_evals, seed):
-    keys = ["rho", "delta", "psi", "mu", "sigr"]
+    keys = MODEL_KEYS
     spaces = [cfg["search_space"][k] for k in keys]
     all_points = [dict(zip(keys, tup)) for tup in itertools.product(*spaces)]
 
@@ -839,6 +1066,8 @@ def parse_args():
     ap = argparse.ArgumentParser(description="LifeCycle optimizer runner")
     ap.add_argument("--config", required=True)
     ap.add_argument("--output-dir", required=True)
+    ap.add_argument("--client-text", default=None, help="Free-text client profile; pins rho and current age/wealth for a client-specific run.")
+    ap.add_argument("--client-grid", action="store_true", help="With --client-text, keep non-rho parameter grids instead of running one scenario.")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--use-real-model", action="store_true", help="run actual life_cycle.m via octave")
     ap.add_argument("--allow-proxy-fallback", action="store_true", help="when real model fails, keep proxy score instead of exiting")
@@ -853,6 +1082,9 @@ def parse_args():
 def main():
     args = parse_args()
     cfg = load_config(Path(args.config))
+    client = None
+    if args.client_text:
+        client = apply_client_text_config(cfg, args.client_text, keep_parameter_grid=args.client_grid)
     validate(cfg)
 
     seed = cfg.get("seed", 0)
@@ -864,7 +1096,7 @@ def main():
     out = resolve_output_dir(args.output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
-    objective = cfg.get("objective", "maximize_terminal_wealth")
+    objective = cfg.get("objective", "maximize_lifetime_utility")
     candidates = build_candidates(cfg, method, max_evals, seed)
     total = len(candidates)
     if total == 0:
@@ -873,8 +1105,14 @@ def main():
     if args.use_real_model and not octave_available() and not args.allow_proxy_fallback:
         raise RuntimeError("--use-real-model requires Octave. Install Octave or add --allow-proxy-fallback.")
 
-    octv = shutil.which("octave")
+    octv = octave_executable()
     print(f"[optimizer] method={method} objective={objective} candidates={total} dry_run={args.dry_run} use_real_model={args.use_real_model} fast_mode={args.fast_mode}")
+    if client:
+        print(
+            "[optimizer] client "
+            f"age={client['age']} wealth={client['wealth']} "
+            f"risk_preference={client['risk_preference']} rho={client['rho']}"
+        )
     print(f"[optimizer] octave_path={octv if octv else 'NOT_FOUND'}")
     sys.stdout.flush()
 
@@ -884,11 +1122,11 @@ def main():
     with results_path.open("w", encoding="utf-8") as f:
         for i, params in enumerate(candidates):
             scenario_dir = out / f"scenario_{i:04d}"
-            run_meta = run_model(params, fixed, scenario_dir, args.dry_run, args.use_real_model, args.fast_mode, args.timeout_sec)
-            if run_meta.get("metric") is not None:
+            run_meta = run_model(params, fixed, scenario_dir, args.dry_run, args.use_real_model, args.fast_mode, args.timeout_sec, cfg.get("client_profile"))
+            if args.use_real_model and run_meta.get("status") != "ok" and not args.allow_proxy_fallback:
+                score = None
+            elif run_meta.get("metric") is not None:
                 score = run_meta["metric"]
-            elif args.use_real_model and not args.allow_proxy_fallback:
-                score = float("-inf")
             else:
                 score = score_proxy(params, objective)
             row = {
@@ -902,10 +1140,15 @@ def main():
                 "run_seconds": run_meta.get("run_seconds", 0.0),
                 "year_files_count": run_meta.get("year_files_count", 0),
                 "octave_command": run_meta.get("octave_command"),
+                "code": run_meta.get("code"),
+                "timed_out": run_meta.get("timed_out", False),
+                "kill_meta": run_meta.get("kill_meta"),
+                "diagnostic_path": run_meta.get("diagnostic_path"),
                 "policy_summary_path": run_meta.get("policy_summary_path"),
                 "lifecycle_checkpoints": run_meta.get("lifecycle_checkpoints"),
             }
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            f.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
+            f.flush()
             results.append(row)
 
             if (i + 1) % max(1, args.progress_every) == 0 or i == total - 1:
@@ -913,10 +1156,10 @@ def main():
                 print(f"[optimizer] progress {i+1}/{total} elapsed={elapsed:.1f}s")
                 sys.stdout.flush()
 
-    results.sort(key=lambda r: r["score"], reverse=True)
+    results.sort(key=ranking_score, reverse=True)
     best = results[0]
     top_k = results[: cfg.get("top_k", 5)]
-    (out / "best_params.json").write_text(json.dumps(best, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "best_params.json").write_text(json.dumps(best, indent=2, ensure_ascii=False, allow_nan=False), encoding="utf-8")
 
     failed = sum(1 for r in results if str(r.get("status","")).startswith("error"))
     total_runtime = round(sum(float(r.get("run_seconds", 0.0)) for r in results), 3)
@@ -933,12 +1176,15 @@ def main():
         "best": best,
         "top_k": top_k,
     }
-    (out / "report.md").write_text("# LifeCycle Optimization Report\n\n" + json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    if client:
+        report["client"] = client
+    (out / "report.md").write_text("# LifeCycle Optimization Report\n\n" + json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False), encoding="utf-8")
     (out / "customer_manager_report.md").write_text(
         render_customer_manager_report(best, report, fixed, cfg.get("client_profile")),
         encoding="utf-8",
     )
-    print(f"[optimizer] done best_score={best['score']:.6f} output_dir={out}")
+    best_score_text = format_score(best.get("score"))
+    print(f"[optimizer] done best_score={best_score_text} output_dir={out}")
     if args.use_real_model and failed > 0:
         print(f"[optimizer] warning: {failed} real-model scenarios failed; check scenario logs")
     print(f"[optimizer] absolute_output_dir={out.resolve()}")
@@ -981,7 +1227,7 @@ def optimize(config_path, output_dir,
     out = resolve_output_dir(args.output_dir)
     out.mkdir(parents=True, exist_ok=True)
 
-    objective = cfg.get("objective", "maximize_terminal_wealth")
+    objective = cfg.get("objective", "maximize_lifetime_utility")
     candidates = build_candidates(cfg, method, max_evals, seed)
     total = len(candidates)
 
@@ -994,7 +1240,8 @@ def optimize(config_path, output_dir,
         run_meta = run_model(
             params, fixed, scenario_dir,
             args.dry_run, args.use_real_model,
-            args.fast_mode, args.timeout_sec
+            args.fast_mode, args.timeout_sec,
+            cfg.get("client_profile")
         )
 
         if run_meta.get("metric") is not None:
@@ -1055,7 +1302,7 @@ def _build_decade_rows(best, fixed, client_profile):
     if policy_summary and policy_summary.get("per_age"):
         per_age = policy_summary["per_age"]
         age_map = {row["age"]: row for row in per_age}
-        ages = list(range(int(fixed.get("tb", 20)), int(fixed.get("td", 100)), 10))
+        ages = list(range(max(int(fixed.get("tb", 20)), int(per_age[0]["age"])), int(fixed.get("td", 100)), 10))
         for start_age in ages:
             src = age_map.get(start_age)
             if not src:
@@ -1139,7 +1386,7 @@ def render_customer_manager_report(best, report_meta, fixed, client_profile=None
         f"- 当前建议配比: 权益类约{current_row['portfolio']['equity_pct']}%，稳健类约{current_row['portfolio']['stabilizer_pct']}%",
         f"- 当前建议消费强度参考: {current_row['consumption']:.4f}",
         f"- 模型目标: {best.get('objective', report_meta.get('objective', 'maximize_terminal_wealth'))}",
-        f"- 最优场景分数: {best.get('score', 0.0):.6f}",
+        f"- 最优场景分数: {format_score(best.get('score'))}",
         f"- 参数附录: rho={params.get('rho')}, delta={params.get('delta')}, psi={params.get('psi')}, mu={params.get('mu')}, sigr={params.get('sigr')}",
         "",
         "## 后续建议",
@@ -1172,6 +1419,138 @@ def render_customer_manager_report(best, report_meta, fixed, client_profile=None
         "- 报告给的是配置方向，不是具体产品清单；落地时还要结合客户风险评级和产品准入。",
         "",
         f"_生成说明: 共评估 {report_meta.get('total_scenarios')} 个场景，模型运行 {report_meta.get('elapsed_seconds')} 秒。_",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def render_customer_manager_report(best, report_meta, fixed, client_profile=None):
+    client_profile = client_profile or {}
+    current_age = client_profile.get("current_age", fixed.get("tb", 20))
+    current_wealth = client_profile.get("current_wealth")
+    rows = _build_decade_rows(best, fixed, client_profile)
+    if not rows:
+        return "# Customer Manager Report\n\n暂无可用于客户沟通的建议。\n"
+
+    current_row = next((row for row in rows if row["is_current_window"]), rows[0])
+    params = best.get("params", {})
+    objective = best.get("objective", report_meta.get("objective", "maximize_terminal_wealth"))
+    wealth_text = "未提供" if current_wealth is None else f"current_wealth={current_wealth}"
+    status = best.get("status", "unknown")
+    metric = best.get("metric")
+    lines = [
+        "# Customer Manager Report",
+        "",
+        "## 客户当前信息",
+        "",
+        f"- 当前年龄: {current_age}岁",
+        f"- 当前财富: {wealth_text}",
+        f"- 当前命中财富路径: {current_row['selected_band_label']}",
+        f"- 当前建议组合: {bucket_label_cn(current_row['portfolio']['bucket'])}",
+        f"- 当前建议配比: 权益类约{current_row['portfolio']['equity_pct']}%，稳健类约{current_row['portfolio']['stabilizer_pct']}%",
+        f"- 当前建议消费强度参考: {current_row['consumption']:.4f}",
+        f"- 模型目标: {objective}",
+        f"- 最优场景分数: {format_score(best.get('score'))}",
+        f"- 模型状态: {status}",
+        f"- 部分模型 metric: {format_score(metric)}",
+        f"- 参数附录: rho={params.get('rho')}, delta={params.get('delta')}, psi={params.get('psi')}, mu={params.get('mu')}, sigr={params.get('sigr')}",
+        "",
+        "## 后续建议",
+        "",
+    ]
+
+    for row in rows:
+        wealth_bands = row["wealth_bands"]
+        lines.append(
+            f"- {row['start_age']}岁到{row['end_age']}岁: 建议以`{bucket_label_cn(row['portfolio']['bucket'])}`为主，"
+            f"权益类约{row['portfolio']['equity_pct']}%，稳健类约{row['portfolio']['stabilizer_pct']}%。"
+        )
+        lines.append(
+            f"  财富路径: {row['selected_band_label']} (参考 cash={row['selected_cash']})；"
+            f"低/中/高财富 alpha 分别为 "
+            f"{wealth_bands.get('low_wealth', {}).get('alpha', row['alpha']):.4f}/"
+            f"{wealth_bands.get('mid_wealth', {}).get('alpha', row['alpha']):.4f}/"
+            f"{wealth_bands.get('high_wealth', {}).get('alpha', row['alpha']):.4f}。"
+        )
+        action = portfolio_action("mid_accumulation", "working") if row["start_age"] < fixed.get("tr", 65) else "继续降低波动，强化流动性和稳定性。"
+        lines.append(f"  建议说明: {action}")
+
+    lines.extend([
+        "",
+        "## 客户经理使用提示",
+        "",
+        "- 先确认客户当前年龄和财富水平，再选择对应的 decade 建议，不要直接套用中财富路径。",
+        "- 如果客户财富明显高于或低于当前路径参考 cash，优先改用更接近的财富档位。",
+        "- 报告给的是配置方向，不是具体产品清单；落地时还要结合客户风险评级和产品准入。",
+        "- 如果模型状态不是 ok，应把本报告视为诊断/预览，等完整真实模型跑通后再作为正式客户结论。",
+        "",
+        f"_生成说明: 共评估 {report_meta.get('total_scenarios')} 个场景，模型运行 {report_meta.get('elapsed_seconds')} 秒。_",
+        "",
+    ])
+    return "\n".join(lines)
+
+
+def render_customer_manager_report(best, report_meta, fixed, client_profile=None):
+    client_profile = client_profile or {}
+    current_age = client_profile.get("current_age", fixed.get("tb", 20))
+    current_wealth = client_profile.get("current_wealth")
+    rows = _build_decade_rows(best, fixed, client_profile)
+    if not rows:
+        return "# Customer Manager Report\n\n\u6682\u65e0\u53ef\u7528\u4e8e\u5ba2\u6237\u6c9f\u901a\u7684\u5efa\u8bae\u3002\n"
+
+    current_row = next((row for row in rows if row["is_current_window"]), rows[0])
+    params = best.get("params", {})
+    objective = best.get("objective", report_meta.get("objective", "maximize_terminal_wealth"))
+    wealth_text = "\u672a\u63d0\u4f9b" if current_wealth is None else f"current_wealth={current_wealth}"
+    status = best.get("status", "unknown")
+    metric = best.get("metric")
+    lines = [
+        "# Customer Manager Report",
+        "",
+        "## \u5ba2\u6237\u5f53\u524d\u4fe1\u606f",
+        "",
+        f"- \u5f53\u524d\u5e74\u9f84: {current_age}\u5c81",
+        f"- \u5f53\u524d\u8d22\u5bcc: {wealth_text}",
+        f"- \u5f53\u524d\u547d\u4e2d\u8d22\u5bcc\u8def\u5f84: {current_row['selected_band_label']}",
+        f"- \u5f53\u524d\u5efa\u8bae\u7ec4\u5408: {bucket_label_cn(current_row['portfolio']['bucket'])}",
+        f"- \u5f53\u524d\u5efa\u8bae\u914d\u6bd4: \u6743\u76ca\u7c7b\u7ea6{current_row['portfolio']['equity_pct']}%\uff0c\u7a33\u5065\u7c7b\u7ea6{current_row['portfolio']['stabilizer_pct']}%",
+        f"- \u5f53\u524d\u5efa\u8bae\u6d88\u8d39\u5f3a\u5ea6\u53c2\u8003: {current_row['consumption']:.4f}",
+        f"- \u6a21\u578b\u76ee\u6807: {objective}",
+        f"- \u6700\u4f18\u573a\u666f\u5206\u6570: {format_score(best.get('score'))}",
+        f"- \u6a21\u578b\u72b6\u6001: {status}",
+        f"- \u90e8\u5206\u6a21\u578b metric: {format_score(metric)}",
+        f"- \u53c2\u6570\u9644\u5f55: rho={params.get('rho')}, delta={params.get('delta')}, psi={params.get('psi')}, mu={params.get('mu')}, sigr={params.get('sigr')}",
+        "",
+        "## \u540e\u7eed\u5efa\u8bae",
+        "",
+    ]
+
+    for row in rows:
+        wealth_bands = row["wealth_bands"]
+        lines.append(
+            f"- {row['start_age']}\u5c81\u5230{row['end_age']}\u5c81: \u5efa\u8bae\u4ee5`{bucket_label_cn(row['portfolio']['bucket'])}`\u4e3a\u4e3b\uff0c"
+            f"\u6743\u76ca\u7c7b\u7ea6{row['portfolio']['equity_pct']}%\uff0c\u7a33\u5065\u7c7b\u7ea6{row['portfolio']['stabilizer_pct']}%\u3002"
+        )
+        lines.append(
+            f"  \u8d22\u5bcc\u8def\u5f84: {row['selected_band_label']} (\u53c2\u8003 cash={row['selected_cash']})\uff1b"
+            f"\u4f4e/\u4e2d/\u9ad8\u8d22\u5bcc alpha \u5206\u522b\u4e3a "
+            f"{wealth_bands.get('low_wealth', {}).get('alpha', row['alpha']):.4f}/"
+            f"{wealth_bands.get('mid_wealth', {}).get('alpha', row['alpha']):.4f}/"
+            f"{wealth_bands.get('high_wealth', {}).get('alpha', row['alpha']):.4f}\u3002"
+        )
+        action = portfolio_action("mid_accumulation", "working") if row["start_age"] < fixed.get("tr", 65) else "\u7ee7\u7eed\u964d\u4f4e\u6ce2\u52a8\uff0c\u5f3a\u5316\u6d41\u52a8\u6027\u548c\u7a33\u5b9a\u6027\u3002"
+        lines.append(f"  \u5efa\u8bae\u8bf4\u660e: {action}")
+
+    lines.extend([
+        "",
+        "## \u5ba2\u6237\u7ecf\u7406\u4f7f\u7528\u63d0\u793a",
+        "",
+        "- \u5148\u786e\u8ba4\u5ba2\u6237\u5f53\u524d\u5e74\u9f84\u548c\u8d22\u5bcc\u6c34\u5e73\uff0c\u518d\u9009\u62e9\u5bf9\u5e94\u7684 decade \u5efa\u8bae\uff0c\u4e0d\u8981\u76f4\u63a5\u5957\u7528\u4e2d\u8d22\u5bcc\u8def\u5f84\u3002",
+        "- \u5982\u679c\u5ba2\u6237\u8d22\u5bcc\u660e\u663e\u9ad8\u4e8e\u6216\u4f4e\u4e8e\u5f53\u524d\u8def\u5f84\u53c2\u8003 cash\uff0c\u4f18\u5148\u6539\u7528\u66f4\u63a5\u8fd1\u7684\u8d22\u5bcc\u6863\u4f4d\u3002",
+        "- \u62a5\u544a\u7ed9\u7684\u662f\u914d\u7f6e\u65b9\u5411\uff0c\u4e0d\u662f\u5177\u4f53\u4ea7\u54c1\u6e05\u5355\uff1b\u843d\u5730\u65f6\u8fd8\u8981\u7ed3\u5408\u5ba2\u6237\u98ce\u9669\u8bc4\u7ea7\u548c\u4ea7\u54c1\u51c6\u5165\u3002",
+        "- \u5982\u679c\u6a21\u578b\u72b6\u6001\u4e0d\u662f ok\uff0c\u5e94\u628a\u672c\u62a5\u544a\u89c6\u4e3a\u8bca\u65ad/\u9884\u89c8\uff0c\u7b49\u5b8c\u6574\u771f\u5b9e\u6a21\u578b\u8dd1\u901a\u540e\u518d\u4f5c\u4e3a\u6b63\u5f0f\u5ba2\u6237\u7ed3\u8bba\u3002",
+        "",
+        f"_\u751f\u6210\u8bf4\u660e: \u5171\u8bc4\u4f30 {report_meta.get('total_scenarios')} \u4e2a\u573a\u666f\uff0c\u6a21\u578b\u8fd0\u884c {report_meta.get('elapsed_seconds')} \u79d2\u3002_",
         "",
     ])
     return "\n".join(lines)

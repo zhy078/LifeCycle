@@ -1,5 +1,5 @@
 {
-  "objective": "maximize_terminal_wealth",
+  "objective": "maximize_lifetime_utility",
   "search_method": "grid",
   "seed": 42,
   "top_k": 5,

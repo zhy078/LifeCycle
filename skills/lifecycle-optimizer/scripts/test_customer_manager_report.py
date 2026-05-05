@@ -12,6 +12,8 @@ class CustomerManagerReportTests(unittest.TestCase):
         best = {
             "objective": "maximize_terminal_wealth",
             "score": 0.05543808,
+            "metric": 0.05543808,
+            "status": "ok",
             "params": {"rho": 8.0, "delta": 0.95, "psi": 0.6, "mu": 0.03, "sigr": 0.15},
             "policy_summary_path": None,
             "lifecycle_checkpoints": {
@@ -66,7 +68,46 @@ class CustomerManagerReportTests(unittest.TestCase):
         self.assertIn("20岁到30岁", rendered)
         self.assertIn("30岁到40岁", rendered)
         self.assertIn("平衡型组合", rendered)
-        self.assertNotIn("退休", rendered)
+        self.assertNotIn("瀹", rendered)
+        self.assertNotIn("閫", rendered)
+
+    def test_timeout_report_is_readable_and_marks_preview(self):
+        best = {
+            "objective": "maximize_terminal_wealth",
+            "score": None,
+            "metric": 7313.93913985,
+            "status": "error_timeout",
+            "params": {"rho": 6.0, "delta": 0.97, "psi": 0.6, "mu": 0.03, "sigr": 0.15},
+            "policy_summary_path": None,
+            "lifecycle_checkpoints": {
+                "age_span": {"start": 66, "end": 99},
+                "checkpoints": [
+                    {
+                        "age": 66,
+                        "phase": "retired",
+                        "mid_wealth_alpha": 0.44,
+                        "mid_wealth_consumption": 3.86,
+                        "wealth_bands": {
+                            "low_wealth": {"alpha": 1.0, "consumption": 0.25, "cash": 0.25},
+                            "mid_wealth": {"alpha": 0.44, "consumption": 3.86, "cash": 10.25},
+                            "high_wealth": {"alpha": 0.11, "consumption": 9.1, "cash": 200.0},
+                        },
+                    }
+                ],
+            },
+        }
+        report_meta = {"objective": "maximize_terminal_wealth", "total_scenarios": 1, "elapsed_seconds": 5.1}
+        fixed = {"tb": 20, "tr": 65, "td": 100}
+
+        rendered = optimize.render_customer_manager_report(best, report_meta, fixed)
+
+        self.assertIn("模型状态: error_timeout", rendered)
+        self.assertIn("最优场景分数: NA", rendered)
+        self.assertIn("部分模型 metric: 7313.939140", rendered)
+        self.assertIn("诊断/预览", rendered)
+        self.assertIn("66岁到100岁", rendered)
+        self.assertNotIn("瀹", rendered)
+        self.assertNotIn("閫", rendered)
 
 
 if __name__ == "__main__":

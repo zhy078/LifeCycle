@@ -1,0 +1,267 @@
+# LifeCycle Optimization Report
+
+{
+  "objective": "maximize_lifetime_utility",
+  "search_method": "grid",
+  "use_real_model": true,
+  "fast_mode": true,
+  "total_scenarios": 1,
+  "failed_scenarios": 0,
+  "total_model_runtime_seconds": 178.408,
+  "elapsed_seconds": 178.435,
+  "best": {
+    "id": 0,
+    "params": {
+      "rho": 6.0,
+      "delta": 0.95,
+      "psi": 0.4,
+      "mu": 0.03,
+      "sigr": 0.15
+    },
+    "objective": "maximize_lifetime_utility",
+    "score": 1.3308529819512795,
+    "status": "ok",
+    "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000",
+    "metric": 1.3308529819512795,
+    "run_seconds": 178.408,
+    "year_files_count": 80,
+    "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+    "code": 0,
+    "timed_out": false,
+    "kill_meta": null,
+    "diagnostic_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000\\runner_diagnostics.json",
+    "policy_summary_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000\\policy_summary.json",
+    "lifecycle_checkpoints": {
+      "age_span": {
+        "start": 20,
+        "end": 99
+      },
+      "checkpoints": [
+        {
+          "age": 20,
+          "phase": "working",
+          "mid_wealth_alpha": 1.0,
+          "mid_wealth_consumption": 3.4054171,
+          "wealth_bands": {
+            "low_wealth": {
+              "alpha": 1.0,
+              "consumption": 0.24975,
+              "cash": 0.25
+            },
+            "mid_wealth": {
+              "alpha": 1.0,
+              "consumption": 3.4054171,
+              "cash": 10.25103648
+            },
+            "high_wealth": {
+              "alpha": 0.11111111,
+              "consumption": 15.87616163,
+              "cash": 200.0
+            }
+          }
+        },
+        {
+          "age": 65,
+          "phase": "working",
+          "mid_wealth_alpha": 0.44444444,
+          "mid_wealth_consumption": 4.1460421,
+          "wealth_bands": {
+            "low_wealth": {
+              "alpha": 1.0,
+              "consumption": 0.24975,
+              "cash": 0.25
+            },
+            "mid_wealth": {
+              "alpha": 0.44444444,
+              "consumption": 4.1460421,
+              "cash": 10.25103648
+            },
+            "high_wealth": {
+              "alpha": 0.11111111,
+              "consumption": 12.00887763,
+              "cash": 200.0
+            }
+          }
+        },
+        {
+          "age": 66,
+          "phase": "retired",
+          "mid_wealth_alpha": 0.44444444,
+          "mid_wealth_consumption": 3.93272724,
+          "wealth_bands": {
+            "low_wealth": {
+              "alpha": 1.0,
+              "consumption": 0.25,
+              "cash": 0.25
+            },
+            "mid_wealth": {
+              "alpha": 0.44444444,
+              "consumption": 3.93272724,
+              "cash": 10.25103648
+            },
+            "high_wealth": {
+              "alpha": 0.11111111,
+              "consumption": 9.17461759,
+              "cash": 200.0
+            }
+          }
+        },
+        {
+          "age": 99,
+          "phase": "retired",
+          "mid_wealth_alpha": 0.22222222,
+          "mid_wealth_consumption": 5.53293779,
+          "wealth_bands": {
+            "low_wealth": {
+              "alpha": 1.0,
+              "consumption": 0.25,
+              "cash": 0.25
+            },
+            "mid_wealth": {
+              "alpha": 0.22222222,
+              "consumption": 5.53293779,
+              "cash": 10.25103648
+            },
+            "high_wealth": {
+              "alpha": 0.22222222,
+              "consumption": 100.71937362,
+              "cash": 200.0
+            }
+          }
+        }
+      ]
+    }
+  },
+  "top_k": [
+    {
+      "id": 0,
+      "params": {
+        "rho": 6.0,
+        "delta": 0.95,
+        "psi": 0.4,
+        "mu": 0.03,
+        "sigr": 0.15
+      },
+      "objective": "maximize_lifetime_utility",
+      "score": 1.3308529819512795,
+      "status": "ok",
+      "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000",
+      "metric": 1.3308529819512795,
+      "run_seconds": 178.408,
+      "year_files_count": 80,
+      "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+      "code": 0,
+      "timed_out": false,
+      "kill_meta": null,
+      "diagnostic_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000\\runner_diagnostics.json",
+      "policy_summary_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\client-real-smoke\\scenario_0000\\policy_summary.json",
+      "lifecycle_checkpoints": {
+        "age_span": {
+          "start": 20,
+          "end": 99
+        },
+        "checkpoints": [
+          {
+            "age": 20,
+            "phase": "working",
+            "mid_wealth_alpha": 1.0,
+            "mid_wealth_consumption": 3.4054171,
+            "wealth_bands": {
+              "low_wealth": {
+                "alpha": 1.0,
+                "consumption": 0.24975,
+                "cash": 0.25
+              },
+              "mid_wealth": {
+                "alpha": 1.0,
+                "consumption": 3.4054171,
+                "cash": 10.25103648
+              },
+              "high_wealth": {
+                "alpha": 0.11111111,
+                "consumption": 15.87616163,
+                "cash": 200.0
+              }
+            }
+          },
+          {
+            "age": 65,
+            "phase": "working",
+            "mid_wealth_alpha": 0.44444444,
+            "mid_wealth_consumption": 4.1460421,
+            "wealth_bands": {
+              "low_wealth": {
+                "alpha": 1.0,
+                "consumption": 0.24975,
+                "cash": 0.25
+              },
+              "mid_wealth": {
+                "alpha": 0.44444444,
+                "consumption": 4.1460421,
+                "cash": 10.25103648
+              },
+              "high_wealth": {
+                "alpha": 0.11111111,
+                "consumption": 12.00887763,
+                "cash": 200.0
+              }
+            }
+          },
+          {
+            "age": 66,
+            "phase": "retired",
+            "mid_wealth_alpha": 0.44444444,
+            "mid_wealth_consumption": 3.93272724,
+            "wealth_bands": {
+              "low_wealth": {
+                "alpha": 1.0,
+                "consumption": 0.25,
+                "cash": 0.25
+              },
+              "mid_wealth": {
+                "alpha": 0.44444444,
+                "consumption": 3.93272724,
+                "cash": 10.25103648
+              },
+              "high_wealth": {
+                "alpha": 0.11111111,
+                "consumption": 9.17461759,
+                "cash": 200.0
+              }
+            }
+          },
+          {
+            "age": 99,
+            "phase": "retired",
+            "mid_wealth_alpha": 0.22222222,
+            "mid_wealth_consumption": 5.53293779,
+            "wealth_bands": {
+              "low_wealth": {
+                "alpha": 1.0,
+                "consumption": 0.25,
+                "cash": 0.25
+              },
+              "mid_wealth": {
+                "alpha": 0.22222222,
+                "consumption": 5.53293779,
+                "cash": 10.25103648
+              },
+              "high_wealth": {
+                "alpha": 0.22222222,
+                "consumption": 100.71937362,
+                "cash": 200.0
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "client": {
+    "age": 45,
+    "wealth": 1.0,
+    "risk_preference": "aggressive",
+    "rho": 6,
+    "raw_text": "45 years old, 0.1m wealth, risky returns"
+  }
+}

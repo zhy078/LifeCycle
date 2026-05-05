@@ -1,0 +1,8 @@
+error: 'string' undefined near line 7, column 12
+
+The 'string' function belongs to the 'datatypes' package indexed in
+Octave Packages at <https://packages.octave.org> which you have
+installed, but not loaded.  To load the package, type
+‘pkg load datatypes’ from the Octave prompt.
+error: called from
+    life_cycle at line 7 column 1

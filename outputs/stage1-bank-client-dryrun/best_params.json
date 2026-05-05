@@ -1,0 +1,18 @@
+{
+  "id": 14,
+  "params": {
+    "rho": 6.0,
+    "delta": 0.98,
+    "psi": 0.7,
+    "mu": 0.04,
+    "sigr": 0.12
+  },
+  "objective": "maximize_terminal_wealth",
+  "score": 52.72949807856125,
+  "status": "dry_run",
+  "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\stage1-bank-client-dryrun\\scenario_0014",
+  "metric": null,
+  "run_seconds": 0.0,
+  "year_files_count": 0,
+  "octave_command": null
+}

@@ -1,0 +1,51 @@
+{
+  "id": 0,
+  "params": {
+    "rho": 8.0,
+    "delta": 0.95,
+    "psi": 0.6,
+    "mu": 0.03,
+    "sigr": 0.15
+  },
+  "objective": "maximize_terminal_wealth",
+  "score": 0.05546866,
+  "status": "ok",
+  "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-age-test-advisor\\scenario_0000",
+  "metric": 0.05546866,
+  "run_seconds": 182.283,
+  "year_files_count": 80,
+  "octave_command": "octave --quiet life_cycle.m",
+  "policy_summary_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-age-test-advisor\\scenario_0000\\policy_summary.json",
+  "lifecycle_checkpoints": {
+    "age_span": {
+      "start": 20,
+      "end": 99
+    },
+    "checkpoints": [
+      {
+        "age": 20,
+        "phase": "working",
+        "mid_wealth_alpha": 0.44444444,
+        "mid_wealth_consumption": 4.1460421
+      },
+      {
+        "age": 64,
+        "phase": "working",
+        "mid_wealth_alpha": 0.44444444,
+        "mid_wealth_consumption": 4.07718741
+      },
+      {
+        "age": 65,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.44444444,
+        "mid_wealth_consumption": 3.86387255
+      },
+      {
+        "age": 99,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.22222222,
+        "mid_wealth_consumption": 5.53293779
+      }
+    ]
+  }
+}

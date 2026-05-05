@@ -5,7 +5,14 @@ description: Optimize life-cycle consumption/portfolio model settings from user-
 
 # lifecycle-optimizer
 
-Collect assumptions, generate case files, run model evaluations, rank outcomes by objective, and return a concise optimization report.
+Collect assumptions, generate case files, run model evaluations, rank outcomes by lifecycle utility, and return a concise optimization report.
+
+Repository layout:
+
+- Core Octave model source lives in `model/`.
+- Saved policy/value snapshots live in `data/`.
+- Run-specific artifacts live in `outputs/`.
+- Project-level entrypoints live in `app/`.
 
 ## Workflow
 
@@ -36,14 +43,14 @@ py skills/lifecycle-optimizer/scripts/optimize.py \
 py skills/lifecycle-optimizer/scripts/optimize.py \
   --config skills/lifecycle-optimizer/assets/sample-case.json \
   --output-dir outputs/lifecycle-optimizer-real \
-  --use-real-model --fast-mode --max-evals 2 --progress-every 1
+  --use-real-model --fast-mode --max-evals 2 --timeout-sec 180 --progress-every 1
 ```
 
 ## Reporting Format
 
 Always provide:
 
-- objective definition and value,
+- objective definition and value. For the real model, the default objective is `maximize_lifetime_utility`: score is the value-function utility at the client's current age and wealth path, not terminal wealth,
 - chosen parameter vector,
 - validation notes,
 - paths to `best_params.json`, `results.jsonl`, and `report.md`.
@@ -77,12 +84,19 @@ py skills/lifecycle-optimizer/scripts/optimize.py --config skills/lifecycle-opti
 
 This writes to: `C:\Users\haoyu\Desktop\code\github\LifeCycle\outputs\lifecycle-optimizer`.
 
+Project-level equivalent:
+
+```bash
+py app/cli.py --dry-run --max-evals 2
+```
+
 
 ## Real-Model Integrity
 
 When `--use-real-model` is enabled, the runner now requires Octave by default.
 If Octave is missing, it exits with an error instead of silently returning proxy scores.
 The real-model runner now executes inside each scenario artifact directory so generated `year*.txt`, `CWY.txt`, `CWYs.txt`, and `SB.txt` stay attached to the scenario that produced them.
+The runner copies `life_cycle.m` and helper `f_*.m` files from `model/` into each scenario artifact directory before patching parameters.
 Fast mode keeps the model's Gaussian quadrature size intact and only reduces lightweight dimensions such as `nsim`, so it remains compatible with the current `life_cycle.m`.
 
 Use `--allow-proxy-fallback` only when you explicitly want fallback behavior for debugging.
@@ -93,11 +107,14 @@ Use `--allow-proxy-fallback` only when you explicitly want fallback behavior for
 Use this to validate end-to-end integration:
 
 ```bash
-py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2
+py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2 --timeout-sec 180
 ```
 
 For strict real-model validation (require all scenarios `status=ok` and year files present):
 
 ```bash
-py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2 --strict-real
+py skills/lifecycle-optimizer/scripts/test_real_integration.py --max-evals 2 --timeout-sec 180 --strict-real
 ```
+
+Timeout diagnostics are written per scenario to `runner_diagnostics.json`.
+When a strict real-model scenario times out, `results.jsonl` still receives a row with `status=error_timeout`, `timed_out=true`, and `score=null`.

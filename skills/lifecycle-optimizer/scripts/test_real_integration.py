@@ -16,6 +16,7 @@ def main():
     ap.add_argument("--config", default="skills/lifecycle-optimizer/assets/sample-case.json")
     ap.add_argument("--output-dir", default="outputs/lifecycle-integration-test")
     ap.add_argument("--max-evals", type=int, default=2)
+    ap.add_argument("--timeout-sec", type=int, default=180)
     ap.add_argument("--strict-real", action="store_true", help="fail if octave missing or scenario not ok")
     args = ap.parse_args()
 
@@ -34,6 +35,7 @@ def main():
         "--use-real-model",
         "--fast-mode",
         "--max-evals", str(args.max_evals),
+        "--timeout-sec", str(args.timeout_sec),
         "--progress-every", "1",
     ]
 

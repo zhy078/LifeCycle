@@ -1,0 +1,81 @@
+{
+  "id": 0,
+  "params": {
+    "rho": 6.0,
+    "delta": 0.97,
+    "psi": 0.6,
+    "mu": 0.03,
+    "sigr": 0.15
+  },
+  "objective": "maximize_terminal_wealth",
+  "score": null,
+  "status": "error_timeout",
+  "artifact_dir": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-demo-client-report\\scenario_0000",
+  "metric": 7313.93913985,
+  "run_seconds": 8.061,
+  "year_files_count": 35,
+  "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+  "code": 1,
+  "timed_out": true,
+  "kill_meta": {
+    "attempted": true,
+    "returncode": 0,
+    "final_returncode": 1
+  },
+  "diagnostic_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-demo-client-report\\scenario_0000\\runner_diagnostics.json",
+  "policy_summary_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-demo-client-report\\scenario_0000\\policy_summary.json",
+  "lifecycle_checkpoints": {
+    "age_span": {
+      "start": 65,
+      "end": 99
+    },
+    "checkpoints": [
+      {
+        "age": 65,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.44444444,
+        "mid_wealth_consumption": 3.86387255,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 0.44444444,
+            "consumption": 3.86387255,
+            "cash": 10.25103648
+          },
+          "high_wealth": {
+            "alpha": 0.11111111,
+            "consumption": 9.10576291,
+            "cash": 200.0
+          }
+        }
+      },
+      {
+        "age": 99,
+        "phase": "retired",
+        "mid_wealth_alpha": 0.22222222,
+        "mid_wealth_consumption": 5.53293779,
+        "wealth_bands": {
+          "low_wealth": {
+            "alpha": 1.0,
+            "consumption": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "alpha": 0.22222222,
+            "consumption": 5.53293779,
+            "cash": 10.25103648
+          },
+          "high_wealth": {
+            "alpha": 0.22222222,
+            "consumption": 100.71937362,
+            "cash": 200.0
+          }
+        }
+      }
+    ]
+  }
+}
