@@ -1,0 +1,31 @@
+{
+  "objective": "maximize_lifetime_utility",
+  "search_method": "grid",
+  "seed": 42,
+  "top_k": 5,
+  "fixed": {
+    "tb": 20,
+    "tr": 66,
+    "td": 100,
+    "nsim": 10000,
+    "r": 1.015
+  },
+  "search_space": {
+    "rho": [6.0, 8.0, 10.0],
+    "delta": [0.95, 0.97, 0.99],
+    "psi": [0.4, 0.5, 0.6],
+    "mu": [0.03, 0.04, 0.05],
+    "sigr": [0.15, 0.2, 0.25]
+  },
+  "constraints": {
+    "max_runtime_seconds": 1800,
+    "rho_min": 1.1,
+    "delta_min": 0.8,
+    "delta_max": 0.999,
+    "psi_min": 0.1,
+    "mu_min": -0.05,
+    "mu_max": 0.2,
+    "sigr_min": 0.01,
+    "sigr_max": 1.0
+  }
+}

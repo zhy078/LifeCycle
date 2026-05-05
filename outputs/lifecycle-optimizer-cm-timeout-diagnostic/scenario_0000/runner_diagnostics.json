@@ -1,0 +1,12 @@
+{
+  "status": "error_timeout",
+  "code": 1,
+  "timed_out": true,
+  "timeout_sec": 5,
+  "run_seconds": 5.056,
+  "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+  "stdout_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-cm-timeout-diagnostic\\scenario_0000\\octave_stdout.txt",
+  "stderr_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-cm-timeout-diagnostic\\scenario_0000\\octave_stderr.txt",
+  "year_files_count": 34,
+  "metric": 7313.93913985
+}

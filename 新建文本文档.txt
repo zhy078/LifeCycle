@@ -1,0 +1,2 @@
+cd C:\Users\haoyu\Desktop\code\github\LifeCycle
+py app/run_agent.py "45 years old, 1 million, stable returns"

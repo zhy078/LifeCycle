@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "code": 0,
+  "timed_out": false,
+  "timeout_sec": 2400,
+  "run_seconds": 725.862,
+  "kill_meta": null,
+  "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+  "stdout_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\grid-test-20x20-results\\scenario_0001\\octave_stdout.txt",
+  "stderr_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\grid-test-20x20-results\\scenario_0001\\octave_stderr.txt",
+  "year_files_count": 80,
+  "metric": 2.5918539772382947
+}

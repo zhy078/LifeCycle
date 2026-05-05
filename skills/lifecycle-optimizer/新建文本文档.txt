@@ -1,0 +1,2 @@
+cd C:\Users\haoyu\Desktop\code\github\LifeCycle\skills\lifecycle-optimizer
+Read openx.md and continue working as backend engineer on lifecycle-optimizer.

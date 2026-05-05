@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "code": 0,
+  "timed_out": false,
+  "timeout_sec": 1200,
+  "run_seconds": 177.117,
+  "kill_meta": null,
+  "octave_command": "E:\\Octave-11.1.0\\mingw64\\bin\\octave-cli.EXE --quiet life_cycle.m",
+  "stdout_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-demo-client-report-full\\scenario_0000\\octave_stdout.txt",
+  "stderr_path": "C:\\Users\\haoyu\\Desktop\\code\\github\\LifeCycle\\outputs\\lifecycle-optimizer-demo-client-report-full\\scenario_0000\\octave_stderr.txt",
+  "year_files_count": 80,
+  "metric": 0.0554167
+}

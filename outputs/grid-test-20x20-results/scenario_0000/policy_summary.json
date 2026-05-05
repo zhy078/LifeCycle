@@ -1,0 +1,4884 @@
+{
+  "age_span": {
+    "start": 20,
+    "end": 99
+  },
+  "pivot_ages": [
+    {
+      "age": 20,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.0,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27686988,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.97300335,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 10.97300335
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.07698696,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.49988577,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.9464213,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.07698696,
+        "max_value": 6.9464213
+      }
+    },
+    {
+      "age": 64,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15504162,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.96568913,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.96568913
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.39590039,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.21339266,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 17.33921912,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.39590039,
+        "max_value": 17.33921912
+      }
+    },
+    {
+      "age": 65,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.1705319,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.74897897,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.74897897
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.44872003,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.2879884,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 18.66187658,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.44872003,
+        "max_value": 18.66187658
+      }
+    },
+    {
+      "age": 99,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.26315789,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.80822415,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 98.79323711,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 98.79323711
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 26.92528895,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 331.72720391,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7306.00794611,
+            "cash": 200.0
+          }
+        },
+        "min_value": 26.92528895,
+        "max_value": 7306.00794611
+      }
+    }
+  ],
+  "average_mid_wealth_alpha": 0.6723684222500005,
+  "average_mid_wealth_consumption": 1.3161641146249994,
+  "per_age": [
+    {
+      "age": 20,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.0,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27686988,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.97300335,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 10.97300335
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.07698696,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.49988577,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.9464213,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.07698696,
+        "max_value": 6.9464213
+      }
+    },
+    {
+      "age": 21,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.94736842,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.20771223,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.12052522,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.12052522
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.04172763,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.45875463,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.85865755,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.04172763,
+        "max_value": 6.85865755
+      }
+    },
+    {
+      "age": 22,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.94736842,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.18603273,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.09884572,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.09884572
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.00995947,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.42227844,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.77854405,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.00995947,
+        "max_value": 6.77854405
+      }
+    },
+    {
+      "age": 23,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.94736842,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15298068,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.06579367,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.06579367
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.98142134,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.39004651,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.7067501,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.98142134,
+        "max_value": 6.7067501
+      }
+    },
+    {
+      "age": 24,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.89473684,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.11328579,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.59889088,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.59889088
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.9558481,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.36173531,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.64424285,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.9558481,
+        "max_value": 6.64424285
+      }
+    },
+    {
+      "age": 25,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.89473684,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.13629564,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.31540136,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.31540136
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.93305008,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.33701356,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.59024831,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.93305008,
+        "max_value": 6.59024831
+      }
+    },
+    {
+      "age": 26,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.89473684,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06474969,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.55035478,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.55035478
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.91291111,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.31562732,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.54565685,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.91291111,
+        "max_value": 6.54565685
+      }
+    },
+    {
+      "age": 27,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.84210526,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06583634,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.7123934,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.7123934
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.89529172,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.2973557,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.51021889,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.89529172,
+        "max_value": 6.51021889
+      }
+    },
+    {
+      "age": 28,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.84210526,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06583634,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.7123934,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.7123934
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.87999721,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.28194365,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.48426434,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.87999721,
+        "max_value": 6.48426434
+      }
+    },
+    {
+      "age": 29,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.84210526,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.31578947,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06583634,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.24494206,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.24494206
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.86671641,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.26921612,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.46843485,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.86671641,
+        "max_value": 6.46843485
+      }
+    },
+    {
+      "age": 30,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.84210526,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.31578947,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00074394,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.48634903,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.48634903
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.85512931,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.25902643,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.46424963,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.85512931,
+        "max_value": 6.46424963
+      }
+    },
+    {
+      "age": 31,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00854851,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.65510558,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.65510558
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.84551287,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.25124846,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.47015013,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.84551287,
+        "max_value": 6.47015013
+      }
+    },
+    {
+      "age": 32,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00854851,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.65510558,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.65510558
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.83793775,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24573082,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.48665131,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.83793775,
+        "max_value": 6.48665131
+      }
+    },
+    {
+      "age": 33,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.98950102,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.63605808,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.63605808
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.83201517,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24240128,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.51452944,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.83201517,
+        "max_value": 6.51452944
+      }
+    },
+    {
+      "age": 34,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.98950102,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.63605808,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.63605808
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82743936,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24118628,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.5542025,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82743936,
+        "max_value": 6.5542025
+      }
+    },
+    {
+      "age": 35,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.01679353,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.23903017,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.23903017
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82442223,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24200471,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.60601836,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82442223,
+        "max_value": 6.60601836
+      }
+    },
+    {
+      "age": 36,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82286609,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24484936,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.66789527,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82286609,
+        "max_value": 6.66789527
+      }
+    },
+    {
+      "age": 37,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.78947368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.26315789,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.26315789,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82273985,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.249658,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.74187467,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82273985,
+        "max_value": 6.74187467
+      }
+    },
+    {
+      "age": 38,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82402531,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.25640122,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.82872145,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82402531,
+        "max_value": 6.82872145
+      }
+    },
+    {
+      "age": 39,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.64396638,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.64396638
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.82671451,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.26506757,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 6.92885658,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.82671451,
+        "max_value": 6.92885658
+      }
+    },
+    {
+      "age": 40,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.83080685,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27565584,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.04070146,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.83080685,
+        "max_value": 7.04070146
+      }
+    },
+    {
+      "age": 41,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.83630659,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.28817599,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.16784276,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.83630659,
+        "max_value": 7.16784276
+      }
+    },
+    {
+      "age": 42,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.84321344,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.30264342,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.3095379,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.84321344,
+        "max_value": 7.3095379
+      }
+    },
+    {
+      "age": 43,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.85152158,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.31908114,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.46641043,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.85152158,
+        "max_value": 7.46641043
+      }
+    },
+    {
+      "age": 44,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.26538999,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.26538999
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.86122756,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.3375171,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.63918474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.86122756,
+        "max_value": 7.63918474
+      }
+    },
+    {
+      "age": 45,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.9542784,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.95600315,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.95600315
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.87234739,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.35799245,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7.82890749,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.87234739,
+        "max_value": 7.82890749
+      }
+    },
+    {
+      "age": 46,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.01679353,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.74395607,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.74395607
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.88487154,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.38055428,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 8.0389688,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.88487154,
+        "max_value": 8.0389688
+      }
+    },
+    {
+      "age": 47,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.01679353,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.74395607,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.74395607
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.89873421,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.40524513,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 8.2623618,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.89873421,
+        "max_value": 8.2623618
+      }
+    },
+    {
+      "age": 48,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00927485,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.69896283,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.69896283
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.91408676,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.43208965,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 8.50480306,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.91408676,
+        "max_value": 8.50480306
+      }
+    },
+    {
+      "age": 49,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00927485,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.37366234,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.37366234
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.93103447,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.46113022,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 8.76771581,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.93103447,
+        "max_value": 8.76771581
+      }
+    },
+    {
+      "age": 50,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00927485,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.0109996,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.0109996
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.94956184,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.49245982,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 9.05492214,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.94956184,
+        "max_value": 9.05492214
+      }
+    },
+    {
+      "age": 51,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00927485,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.0109996,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.0109996
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.96939873,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.52614975,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 9.36869248,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.96939873,
+        "max_value": 9.36869248
+      }
+    },
+    {
+      "age": 52,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.00927485,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.90105229,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.90105229
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 0.99056257,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.56227227,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 9.70883212,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.99056257,
+        "max_value": 9.70883212
+      }
+    },
+    {
+      "age": 53,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.04553353,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.93731096,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.93731096
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.01368538,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.60091237,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.07028865,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.01368538,
+        "max_value": 10.07028865
+      }
+    },
+    {
+      "age": 54,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.04183924,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.89048576,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.89048576
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.03827662,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.64212706,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.46050656,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.03827662,
+        "max_value": 10.46050656
+      }
+    },
+    {
+      "age": 55,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.07106364,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.91971016,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.91971016
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.06419688,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.68600248,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.89150934,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.06419688,
+        "max_value": 10.89150934
+      }
+    },
+    {
+      "age": 56,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06851045,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.66692352,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.66692352
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.09123134,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.73263656,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 11.35977204,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.09123134,
+        "max_value": 11.35977204
+      }
+    },
+    {
+      "age": 57,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06851045,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.66692352,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.66692352
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.11926276,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.78208572,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 11.86345096,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.11926276,
+        "max_value": 11.86345096
+      }
+    },
+    {
+      "age": 58,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06851045,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.2498606,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.2498606
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.14908432,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.83443062,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.41312843,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.14908432,
+        "max_value": 12.41312843
+      }
+    },
+    {
+      "age": 59,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.06851045,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.2498606,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.2498606
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.18253346,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.88974717,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.01938268,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.18253346,
+        "max_value": 13.01938268
+      }
+    },
+    {
+      "age": 60,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.09646763,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.27781778,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.27781778
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.22007636,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.94812477,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.6886746,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.22007636,
+        "max_value": 13.6886746
+      }
+    },
+    {
+      "age": 61,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15298068,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.44200691,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.44200691
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.26055635,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.00956913,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 14.43359273,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.26055635,
+        "max_value": 14.43359273
+      }
+    },
+    {
+      "age": 62,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.73684211,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15298068,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.33433083,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.33433083
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.30341673,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.07423467,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 15.27102827,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.30341673,
+        "max_value": 15.27102827
+      }
+    },
+    {
+      "age": 63,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15298068,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.18125261,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 13.18125261
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.34834082,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.14215565,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 16.2274426,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.34834082,
+        "max_value": 16.2274426
+      }
+    },
+    {
+      "age": 64,
+      "phase": "working",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.24975,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.15504162,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.96568913,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.24975,
+        "max_value": 12.96568913
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.39590039,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.21339266,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 17.33921912,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.39590039,
+        "max_value": 17.33921912
+      }
+    },
+    {
+      "age": 65,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.1705319,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.74897897,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.74897897
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.44872003,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.2879884,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 18.66187658,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.44872003,
+        "max_value": 18.66187658
+      }
+    },
+    {
+      "age": 66,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.1705319,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.74897897,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.74897897
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.48620587,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.3660375,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 19.55047778,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.48620587,
+        "max_value": 19.55047778
+      }
+    },
+    {
+      "age": 67,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.1705319,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.74897897,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.74897897
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.52635809,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.45017925,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 20.51903317,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.52635809,
+        "max_value": 20.51903317
+      }
+    },
+    {
+      "age": 68,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.24519074,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.82363781,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.82363781
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.56942357,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.54119092,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 21.57783553,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.56942357,
+        "max_value": 21.57783553
+      }
+    },
+    {
+      "age": 69,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.19204963,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.7704967,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.7704967
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.61564646,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.63987879,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 22.73862618,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.61564646,
+        "max_value": 22.73862618
+      }
+    },
+    {
+      "age": 70,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.19204963,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.85937164,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.85937164
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.66529257,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.74711899,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 24.01459024,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.66529257,
+        "max_value": 24.01459024
+      }
+    },
+    {
+      "age": 71,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27640574,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.85485281,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.85485281
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.71866293,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.86399929,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 25.42140234,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.71866293,
+        "max_value": 25.42140234
+      }
+    },
+    {
+      "age": 72,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.68421053,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27640574,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 10.85485281,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 10.85485281
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.77611415,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.99159089,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 26.97846661,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.77611415,
+        "max_value": 26.97846661
+      }
+    },
+    {
+      "age": 73,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27640574,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.70086649,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 12.70086649
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.83807434,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.13101668,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 28.70941088,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.83807434,
+        "max_value": 28.70941088
+      }
+    },
+    {
+      "age": 74,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.27640574,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 11.76822229,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 11.76822229
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.90506971,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.28424103,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 30.63387607,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.90506971,
+        "max_value": 30.63387607
+      }
+    },
+    {
+      "age": 75,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.15789474,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.15789474,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.26334426,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 11.9197757,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 11.9197757
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 1.97772471,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.45303387,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 32.78830038,
+            "cash": 200.0
+          }
+        },
+        "min_value": 1.97772471,
+        "max_value": 32.78830038
+      }
+    },
+    {
+      "age": 76,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.32829223,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.65244159,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 12.65244159
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.05687626,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.63908558,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 35.21434399,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.05687626,
+        "max_value": 35.21434399
+      }
+    },
+    {
+      "age": 77,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.32829223,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.85453104,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 12.85453104
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.1433297,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.84532733,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 37.94541093,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.1433297,
+        "max_value": 37.94541093
+      }
+    },
+    {
+      "age": 78,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.63157895,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.32829223,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 12.85453104,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 12.85453104
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.23804748,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.07512474,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 41.04429244,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.23804748,
+        "max_value": 41.04429244
+      }
+    },
+    {
+      "age": 79,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.57894737,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.30681636,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 13.93862595,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 13.93862595
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.34210721,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.33337879,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 44.58842753,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.34210721,
+        "max_value": 44.58842753
+      }
+    },
+    {
+      "age": 80,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.57894737,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.31863682,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 14.39480254,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 14.39480254
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.4567244,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.62457609,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 48.64739099,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.4567244,
+        "max_value": 48.64739099
+      }
+    },
+    {
+      "age": 81,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.57894737,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.41575644,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 14.98724976,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 14.98724976
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.58319945,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.95419052,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 53.33021079,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.58319945,
+        "max_value": 53.33021079
+      }
+    },
+    {
+      "age": 82,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.57894737,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.41575644,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 15.72099383,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 15.72099383
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.72316471,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 5.32942201,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 58.76913198,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.72316471,
+        "max_value": 58.76913198
+      }
+    },
+    {
+      "age": 83,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.52631579,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.41575644,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 15.82308965,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 15.82308965
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 2.8789076,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 5.75997879,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 65.14049494,
+            "cash": 200.0
+          }
+        },
+        "min_value": 2.8789076,
+        "max_value": 65.14049494
+      }
+    },
+    {
+      "age": 84,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.52631579,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.41575644,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 16.18613107,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 16.18613107
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 3.05368986,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 6.2597101,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 72.68665581,
+            "cash": 200.0
+          }
+        },
+        "min_value": 3.05368986,
+        "max_value": 72.68665581
+      }
+    },
+    {
+      "age": 85,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.52631579,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.41575644,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 17.3556115,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 17.3556115
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 3.2516957,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 6.84701544,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 81.74146692,
+            "cash": 200.0
+          }
+        },
+        "min_value": 3.2516957,
+        "max_value": 81.74146692
+      }
+    },
+    {
+      "age": 86,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.52631579,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.52469651,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 18.74009835,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 18.74009835
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 3.47740869,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 7.54478648,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 92.71124836,
+            "cash": 200.0
+          }
+        },
+        "min_value": 3.47740869,
+        "max_value": 92.71124836
+      }
+    },
+    {
+      "age": 87,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.47368421,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.52469651,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 19.78693073,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 19.78693073
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 3.73614169,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 8.38146955,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 106.16828181,
+            "cash": 200.0
+          }
+        },
+        "min_value": 3.73614169,
+        "max_value": 106.16828181
+      }
+    },
+    {
+      "age": 88,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.47368421,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.56144136,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 20.64010727,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 20.64010727
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 4.03533695,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 9.39982967,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 122.93414093,
+            "cash": 200.0
+          }
+        },
+        "min_value": 4.03533695,
+        "max_value": 122.93414093
+      }
+    },
+    {
+      "age": 89,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.42105263,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.56144136,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 22.20146979,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 22.20146979
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 4.38472063,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 10.66010283,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 144.19608923,
+            "cash": 200.0
+          }
+        },
+        "min_value": 4.38472063,
+        "max_value": 144.19608923
+      }
+    },
+    {
+      "age": 90,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.42105263,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.67067697,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 22.29799384,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 22.29799384
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 4.79816738,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 12.25377042,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 171.75536453,
+            "cash": 200.0
+          }
+        },
+        "min_value": 4.79816738,
+        "max_value": 171.75536453
+      }
+    },
+    {
+      "age": 91,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.42105263,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.67067697,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 24.47954856,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 24.47954856
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 5.29481453,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 14.31468753,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 208.42512279,
+            "cash": 200.0
+          }
+        },
+        "min_value": 5.29481453,
+        "max_value": 208.42512279
+      }
+    },
+    {
+      "age": 92,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.42105263,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.79114544,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 27.30639316,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 27.30639316
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 5.902078,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 17.06604191,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 258.61128927,
+            "cash": 200.0
+          }
+        },
+        "min_value": 5.902078,
+        "max_value": 258.61128927
+      }
+    },
+    {
+      "age": 93,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.36842105,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 1.95011115,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 31.27569503,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 31.27569503
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 6.66216225,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 20.87036274,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 329.97155545,
+            "cash": 200.0
+          }
+        },
+        "min_value": 6.66216225,
+        "max_value": 329.97155545
+      }
+    },
+    {
+      "age": 94,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.36842105,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.02864167,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 32.94049856,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 32.94049856
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 7.64314944,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 26.37429828,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 436.67073871,
+            "cash": 200.0
+          }
+        },
+        "min_value": 7.64314944,
+        "max_value": 436.67073871
+      }
+    },
+    {
+      "age": 95,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.36842105,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.24431341,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 37.76740655,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 37.76740655
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 8.95952909,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 34.90011529,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 606.59344203,
+            "cash": 200.0
+          }
+        },
+        "min_value": 8.95952909,
+        "max_value": 606.59344203
+      }
+    },
+    {
+      "age": 96,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.31578947,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.42997253,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 46.08529307,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 46.08529307
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 10.81529077,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 49.2413368,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 901.47963969,
+            "cash": 200.0
+          }
+        },
+        "min_value": 10.81529077,
+        "max_value": 901.47963969
+      }
+    },
+    {
+      "age": 97,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.31578947,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 2.83580753,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 52.50899772,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 52.50899772
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 13.60299389,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 76.33766972,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 1478.87376731,
+            "cash": 200.0
+          }
+        },
+        "min_value": 13.60299389,
+        "max_value": 1478.87376731
+      }
+    },
+    {
+      "age": 98,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.26315789,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 3.37757162,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 70.74637925,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 70.74637925
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 18.20117304,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 137.99173834,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 2842.90554446,
+            "cash": 200.0
+          }
+        },
+        "min_value": 18.20117304,
+        "max_value": 2842.90554446
+      }
+    },
+    {
+      "age": 99,
+      "phase": "retired",
+      "alpha": {
+        "points": {
+          "low_wealth": {
+            "value": 1.0,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 0.26315789,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 0.21052632,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.21052632,
+        "max_value": 1.0
+      },
+      "consumption": {
+        "points": {
+          "low_wealth": {
+            "value": 0.25,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 4.80822415,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 98.79323711,
+            "cash": 200.0
+          }
+        },
+        "min_value": 0.25,
+        "max_value": 98.79323711
+      },
+      "value": {
+        "points": {
+          "low_wealth": {
+            "value": 26.92528895,
+            "cash": 0.25
+          },
+          "mid_wealth": {
+            "value": 331.72720391,
+            "cash": 8.43105858
+          },
+          "high_wealth": {
+            "value": 7306.00794611,
+            "cash": 200.0
+          }
+        },
+        "min_value": 26.92528895,
+        "max_value": 7306.00794611
+      }
+    }
+  ]
+}
